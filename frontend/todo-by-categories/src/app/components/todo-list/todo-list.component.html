@@ -1,0 +1,23 @@
+<div>
+    <h1>Todo By Categories</h1>
+     <div>
+        <button mat-raised-button color="primary" (click)="refresh()">Refresh</button>
+    </div>
+</div>
+
+
+<mat-accordion *ngIf="todos.length">
+  <mat-expansion-panel *ngFor="let category of categories">
+    <mat-expansion-panel-header>
+      <mat-panel-title>{{ category }} 
+          <button mat-raised-button color="ascent" (click)="openAddTodoDialog(category)">Add Todo</button>
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+
+    <app-todo-table [todos]="getCategoryTodo(category)"
+                    (updateCompletion)="updateCompletionStatus($event.id, $event.completed)"
+                    (delete)="deleteTodo($event)"></app-todo-table>
+  </mat-expansion-panel>
+</mat-accordion>
+
+<mat-spinner *ngIf="!todos.length"></mat-spinner>

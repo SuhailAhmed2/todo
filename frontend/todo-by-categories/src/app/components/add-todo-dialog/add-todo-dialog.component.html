@@ -1,0 +1,10 @@
+<h2 mat-dialog-title color="primary">Add Todo</h2>
+<mat-dialog-content>
+  <mat-form-field>
+    <input matInput placeholder="Title" [(ngModel)]="newTodoTitle">
+  </mat-form-field>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-button (click)="cancel()">Cancel</button>
+  <button mat-button mat-button [mat-dialog-close]="{ title: newTodoTitle, category: data.category }" >Add</button>
+</mat-dialog-actions>
