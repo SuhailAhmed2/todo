@@ -19,6 +19,10 @@ let todos = [
 app.use(bodyParser.json());
 app.use(cors());
 
+app.get('/twilio', (req, res) => {
+  res.json(process.env.twilio);
+});
+
 app.get('/todos', (req, res) => {
   res.json(todos);
 });
